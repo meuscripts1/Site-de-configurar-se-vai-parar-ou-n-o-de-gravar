@@ -1,0 +1,1 @@
+# Site-de-configurar-se-vai-parar-ou-n-o-de-gravar
