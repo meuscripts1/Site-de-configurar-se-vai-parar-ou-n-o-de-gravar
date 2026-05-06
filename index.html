@@ -75,10 +75,6 @@
             box-shadow: 0 12px 25px rgba(120, 120, 120, 0.4);
         }
 
-        .btn:active {
-            transform: translateY(2px);
-        }
-
         #stopBtn {
             border-color: #c44;
             color: #ff9999;
@@ -114,12 +110,10 @@
     <script>
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-        const stopBtn = document.getElementById('stopBtn');
-        const continueBtn = document.getElementById('continueBtn');
 
         let width, height;
         let particles = [];
-        let isRunning = true;
+        let isRunning = true;   // continua sempre rodando
 
         class Particle {
             constructor() {
@@ -139,7 +133,6 @@
             }
             
             update() {
-                if (!isRunning) return;
                 this.y += this.speed * this.direction;
                 this.wobble += this.wobbleSpeed;
                 this.x += Math.sin(this.wobble) * 1.3;
@@ -195,16 +188,9 @@
             requestAnimationFrame(animate);
         }
 
-        // Botões
-        stopBtn.addEventListener('click', () => {
-            isRunning = false;
-        });
+        // Botões sem função (só visual)
+        // Nenhum event listener adicionado
 
-        continueBtn.addEventListener('click', () => {
-            isRunning = true;
-        });
-
-        // Responsivo
         window.addEventListener('resize', () => {
             resizeCanvas();
             createParticles(80);
